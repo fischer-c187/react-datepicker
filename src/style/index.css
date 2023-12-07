@@ -1,0 +1,16 @@
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
+body {
+  min-width: 375px;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: auto;
+}
