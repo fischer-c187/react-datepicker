@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './Datepicker.module.css';
 import Calendar from '../Calendar/Calendar';
-import isValidDateString from '../../utils/date';
+import { isValidDateString } from '../../utils/date';
 
 type DatepickerProps = {
   date: string;
@@ -36,7 +36,7 @@ function Datepicker({ date, onChange }: DatepickerProps) {
         pattern='^(1[0-2]|0?[1-9])(\/|-)(3[01]|[12][0-9]|0?[1-9])(\/|-)([0-9]{2})?[0-9]{2}$'
         title='Enter the date in this format: MM/DD/YYYY or MM-DD-YYYY'
       />
-      {displayCalendar && <Calendar />}
+      {displayCalendar && <Calendar date={date} onClickNewDate={onChange} />}
     </div>
   );
 }
