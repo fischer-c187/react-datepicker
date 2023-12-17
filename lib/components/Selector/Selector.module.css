@@ -1,0 +1,19 @@
+.selectorWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.text {
+  text-align: center;
+  width: 50px;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
