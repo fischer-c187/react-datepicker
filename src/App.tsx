@@ -1,11 +1,14 @@
-import { Button } from '../lib/main';
+import { useState } from 'react';
+import Datepicker from '../lib/components/Datepicker/Datepicker';
+import styles from './App.module.css';
 
 function App() {
+  const [date, setDate] = useState('');
+
   return (
-    <>
-      <h1>Datepicker</h1>
-      <Button />
-    </>
+    <div className={styles.inputWrapper}>
+      <Datepicker date={date} onChange={setDate} />
+    </div>
   );
 }
 
