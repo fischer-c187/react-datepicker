@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className={styles.inputWrapper}>
-      <Datepicker date={date} onChange={setDate} />
+      <Datepicker date={date} updateDateState={setDate} />
     </div>
   );
 }
