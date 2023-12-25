@@ -1,50 +1,51 @@
-import { useState } from 'react';
+import { useCallback, useRef } from 'react';
 import styles from './Datepicker.module.css';
-import Calendar from '../Calendar/Calendar';
+import DefaultCalendar from '../Calendar/DefaultCalendar';
+import { DatepickerProps } from '../../interfaces/componentsTypes';
+import useLastValidateDate from '../../hook/useLastValidateDate';
 import { isValidDateString } from '../../utils/date';
+import useToggleCalendar from '../../hook/useToggleCalendar';
+import DateInput from '../DateInput/DateInput';
 
-type DatepickerProps = {
-  date: string;
-  onChange: React.Dispatch<React.SetStateAction<string>>;
-};
+function Datepicker({ date, updateDateState, Calendar = DefaultCalendar }: DatepickerProps) {
+  const datepickerRef = useRef<HTMLDivElement>(null);
 
-function Datepicker({ date, onChange }: DatepickerProps) {
-  const [displayCalendar, setDisplayCalendar] = useState(false);
-  const [lastValideDate, setLastValideDate] = useState(isValidDateString(date) ? date : '');
+  const lastValidDate = useLastValidateDate(date);
+  const { displayCalendar, toggleCalendar, openCalendar } = useToggleCalendar(datepickerRef);
 
-  function handleBlur() {
-    if (isValidDateString(date)) {
-      setLastValideDate(date);
-    } else {
-      onChange(lastValideDate);
+  const handleNewDate = useCallback(
+    (newDate: string) => {
+      updateDateState(newDate);
+      toggleCalendar();
+    },
+    [updateDateState, toggleCalendar],
+  );
+
+  const handleKeyDownToggleCalendar = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        openCalendar();
+      }
+    },
+    [openCalendar],
+  );
+
+  const validateOrResetDate = useCallback(() => {
+    if (!isValidDateString(date)) {
+      updateDateState(lastValidDate);
     }
-  }
-
-  function handleClick(event: React.MouseEvent<HTMLInputElement, MouseEvent>) {
-    event.preventDefault();
-    setDisplayCalendar((lastState) => (!lastState ? !lastState : lastState));
-  }
-
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter') {
-      setDisplayCalendar((lastState) => !lastState);
-    }
-  }
+  }, [date, updateDateState, lastValidDate]);
 
   return (
-    <div className={styles.inputWrapper}>
-      <input
-        type='text'
-        value={date}
-        onChange={(event) => onChange(event.target.value)}
-        onClick={handleClick}
-        onBlur={handleBlur}
-        onKeyDown={handleKeyDown}
-        pattern='^(1[0-2]|0?[1-9])(\/|-)(3[01]|[12][0-9]|0?[1-9])(\/|-)([0-9]{2})?[0-9]{2}$'
-        title='Enter the date in this format: MM/DD/YYYY or MM-DD-YYYY'
-        tabIndex={0}
+    <div className={styles.inputWrapper} ref={datepickerRef}>
+      <DateInput
+        date={date}
+        onClick={openCalendar}
+        onBlur={validateOrResetDate}
+        onKeyDown={handleKeyDownToggleCalendar}
+        onChange={(event) => updateDateState(event.target.value)}
       />
-      {displayCalendar && <Calendar date={date} onClickNewDate={onChange} />}
+      {displayCalendar && <Calendar date={date} onClickNewDate={handleNewDate} />}
     </div>
   );
 }
