@@ -4,7 +4,7 @@ import { CalendarDate } from '../../interfaces/commonTypes';
 type CalendarContextType = {
   calendarDate: CalendarDate;
   setCalendarDate: React.Dispatch<React.SetStateAction<CalendarDate>>;
-  onClickNewDate: React.Dispatch<React.SetStateAction<string>>;
+  onClickNewDate: (newDate: string) => void;
 };
 
 const CalendarContext = createContext<CalendarContextType | undefined>(undefined);
