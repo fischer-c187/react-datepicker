@@ -1,0 +1,55 @@
+.days {
+  align-items: center;
+  color: #6a6a6d;
+  display: flex;
+  font-size: 0.75rem;
+  height: 90%;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  transition: color 100ms;
+  width: 90%;
+  z-index: 100;
+}
+
+.days::after,
+.days::before {
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.days::before {
+  background-color: #d5d5d6;
+  border-radius: 75%;
+  opacity: 50%;
+}
+
+.activeDays::before {
+  background-color: #93ad18;
+  border-radius: 75%;
+  opacity: 50%;
+}
+
+.days::after {
+  background-color: white;
+  transition: opacity 100ms;
+}
+
+.days:hover::after,
+.activeDays::after {
+  opacity: 0;
+}
+
+.activeDays {
+  color: white;
+  cursor: pointer;
+}
+
+.days:hover {
+  cursor: pointer;
+}

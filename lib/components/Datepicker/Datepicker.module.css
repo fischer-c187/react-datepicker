@@ -1,11 +1,5 @@
-.calendar {
-  background-color: red;
-  height: 250px;
-  position: absolute;
-  top: 50px;
-  width: 250px;
-}
-
 .inputWrapper {
+  min-width: 100%;
   position: relative;
+  width: 100%;
 }
