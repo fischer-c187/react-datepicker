@@ -3,12 +3,11 @@ import {
   endOfWeek,
   format,
   getDaysInMonth,
-  isFirstDayOfMonth,
   startOfMonth,
   startOfWeek,
 } from 'date-fns';
 import {
-  CalendarDate,
+  DateParts,
   DayNamePattern,
   DayNumber,
   MonthNamePattern,
@@ -30,7 +29,7 @@ export function getMonthName(monthNumber: MonthNumber, monthPattern: MonthNamePa
   return format(date, monthPattern);
 }
 
-export function getWeekDays(pattern: DayNamePattern = 'eeeeee', firstDayofWeek: DayNumber = 1) {
+export function getWeekDays(pattern: DayNamePattern = 'eee', firstDayofWeek: DayNumber = 1) {
   const now = new Date();
   const weekDays: string[] = [];
   const start = startOfWeek(now, { weekStartsOn: firstDayofWeek });
@@ -43,7 +42,7 @@ export function getWeekDays(pattern: DayNamePattern = 'eeeeee', firstDayofWeek: 
   return weekDays;
 }
 
-export function parseDateString(dateString: string): CalendarDate {
+export function parseDateString(dateString: string): DateParts {
   if (isValidDateString(dateString)) {
     const date = new Date(dateString);
     return {
@@ -69,9 +68,15 @@ export function getDaysNumberArray(date: Date) {
   return Array.from({ length: numbersOfDaysInMonth(date) }, (_value, index) => index + 1);
 }
 
-export function getFirstDayMonth(date: Date) {
-  if (isFirstDayOfMonth(date)) {
-    return date.getDay();
-  }
-  return startOfMonth(date).getDay();
+export function getFirstDayMonth(date: Date, firstDayOfWeek: DayNumber = 1) {
+  const firstDay = startOfMonth(date).getDay();
+  return (firstDay < firstDayOfWeek ? 7 : 0) + firstDay - firstDayOfWeek + 1;
+}
+
+export function areDatesEqual(date1: Date, date2: Date) {
+  return (
+    date1.getDate() === date2.getDate() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getFullYear() === date2.getFullYear()
+  );
 }

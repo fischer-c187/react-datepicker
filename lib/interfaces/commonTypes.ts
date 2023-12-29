@@ -6,7 +6,7 @@ export type DayNumber = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 export type DayNamePattern = 'eee' | 'eeee' | 'eeeee' | 'eeeeee';
 
-export type CalendarDate = {
+export type DateParts = {
   day: number;
   month: MonthNumber;
   year: number;

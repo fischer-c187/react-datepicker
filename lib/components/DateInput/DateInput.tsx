@@ -1,4 +1,4 @@
-import './DateInput.module.css';
+import styles from './DateInput.module.css';
 
 type DateInputProps = {
   date: string;
@@ -11,6 +11,7 @@ type DateInputProps = {
 function DateInput({ date, onClick, onBlur, onKeyDown, onChange }: DateInputProps) {
   return (
     <input
+      className={styles.dateInput}
       type='text'
       value={date}
       onChange={onChange}
