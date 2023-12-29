@@ -5,7 +5,7 @@ function WeekDayLabels() {
   const days = getWeekDays();
 
   return (
-    <div className={styles.gridWeek}>
+    <div className={`${styles.gridWeek} ${styles.weekLabels}`}>
       {days.map((day) => (
         <p key={day}>{day}</p>
       ))}

@@ -1,29 +1,11 @@
-import { useCallback, useContext } from 'react';
-import { MonthNumber } from '../../interfaces/commonTypes';
+import { useContext } from 'react';
 import Selector from '../Selector/Selector';
 import { getMonthName } from '../../utils/date';
-import CalendarContext from './context';
+import CalendarContext from './context/context';
+import { calendarReducerAction } from './reducer/CalendarReducer';
 
 function MonthSelection() {
   const context = useContext(CalendarContext);
-
-  const previousMonth = useCallback(() => {
-    if (context) {
-      context.setCalendarDate((previousCalendar) => {
-        const newMonthNumber = previousCalendar.month === 0 ? 11 : previousCalendar.month - 1;
-        return { ...previousCalendar, month: newMonthNumber as MonthNumber };
-      });
-    }
-  }, [context]);
-
-  const nextMonth = useCallback(() => {
-    if (context) {
-      context.setCalendarDate((previousCalendar) => {
-        const newMonthNumber = previousCalendar.month === 11 ? 0 : previousCalendar.month + 1;
-        return { ...previousCalendar, month: newMonthNumber as MonthNumber };
-      });
-    }
-  }, [context]);
 
   if (!context) {
     return null;
@@ -31,9 +13,9 @@ function MonthSelection() {
 
   return (
     <Selector
-      element={getMonthName(context.calendarDate.month)}
-      previousHandleClick={previousMonth}
-      nextHandleClick={nextMonth}
+      element={getMonthName(context.dateParts.month)}
+      previousHandleClick={() => context.dispatch({ type: calendarReducerAction.PREVIOUS_MONTH })}
+      nextHandleClick={() => context.dispatch({ type: calendarReducerAction.NEXT_MONTH })}
     />
   );
 }
