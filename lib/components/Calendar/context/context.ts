@@ -1,9 +1,11 @@
 import { createContext } from 'react';
-import { CalendarDate } from '../../interfaces/commonTypes';
+import { DateParts } from '../../../interfaces/commonTypes';
+import { CalendarActions } from '../reducer/CalendarReducer';
 
 type CalendarContextType = {
-  calendarDate: CalendarDate;
-  setCalendarDate: React.Dispatch<React.SetStateAction<CalendarDate>>;
+  dateParts: DateParts;
+  dispatch: React.Dispatch<CalendarActions>;
+  date: string;
   onClickNewDate: (newDate: string) => void;
 };
 
