@@ -1,11 +1,11 @@
-import { PropsWithChildren, useEffect, useMemo, useState } from 'react';
-import CalendarContext from './context';
+import { PropsWithChildren, useMemo } from 'react';
+import CalendarContext from './context/context';
 import MonthSelection from './MonthSelection';
 import WeekDayLabels from './WeekDayLabels';
 import YearSelection from './YearSelection';
 import Days from './days';
-import { parseDateString } from '../../utils/date';
 import styles from './Calendar.module.css';
+import useDateParts from '../../hook/useDateParts';
 
 type CalendarProps = PropsWithChildren<{
   date: string;
@@ -13,20 +13,16 @@ type CalendarProps = PropsWithChildren<{
 }>;
 
 function Calendar({ date, onClickNewDate, children }: CalendarProps) {
-  const [calendarDate, setCalendarDate] = useState(() => parseDateString(date));
-
-  // TODO: extraire la logique de validation de date dans un hook
-  useEffect(() => {
-    setCalendarDate(parseDateString(date));
-  }, [date]);
+  const [dateParts, dispatch] = useDateParts(date);
 
   const contextValue = useMemo(
     () => ({
-      calendarDate,
-      setCalendarDate,
+      dateParts,
+      dispatch,
+      date,
       onClickNewDate,
     }),
-    [calendarDate, setCalendarDate, onClickNewDate],
+    [dateParts, dispatch, onClickNewDate, date],
   );
 
   return (
