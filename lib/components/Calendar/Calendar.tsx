@@ -12,6 +12,16 @@ type CalendarProps = PropsWithChildren<{
   onClickNewDate: (newDate: string) => void;
 }>;
 
+/**
+ * Calendar component using the Compound Components pattern.
+ *
+ * This component serves as a container for various calendar-related subcomponents
+ * like MonthSelection, YearSelection, WeekDayLabels, and Days. It provides a shared
+ * context to these subcomponents, enabling a flexible and customizable calendar interface.
+ * The compound component pattern allows each subcomponent to function both independently
+ * and as part of the whole calendar, offering greater modularity and control over the UI.
+ *
+ */
 function Calendar({ date, onClickNewDate, children }: CalendarProps) {
   const [dateParts, dispatch] = useDateParts(date);
 

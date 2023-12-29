@@ -8,7 +8,6 @@ import {
 } from '../components/Calendar/reducer/CalendarReducer';
 
 function useDateParts(date: string): [DateParts, React.Dispatch<CalendarActions>] {
-  // const [dateParts, setDateParts] = useState(() => parseDateString(date));
   const [dateParts, dispatch] = useReducer(calendarReducer, parseDateString(date));
 
   useEffect(() => {

@@ -7,6 +7,18 @@ import { isValidDateString } from '../../utils/date';
 import useToggleCalendar from '../../hook/useToggleCalendar';
 import DateInput from '../DateInput/DateInput';
 
+/**
+ * Datepicker component allowing users to select a date.
+ *
+ * This component utilizes a combination of custom hooks and components to provide a
+ * comprehensive date picking functionality. It uses `useLastValidateDate` to track the last valid date,
+ * `useToggleCalendar` to manage the display state of the calendar, and a `DateInput` component for
+ * input handling. The component ensures date validity and provides functionalities to toggle
+ * and handle calendar view. `Datepicker` accepts props to control the date state and optionally
+ * override the default Calendar component.
+ *
+ * @param {DatepickerProps} props - Props including 'date', 'updateDateState', and an optional 'Calendar' component.
+ */
 function Datepicker({ date, updateDateState, Calendar = DefaultCalendar }: DatepickerProps) {
   const datepickerRef = useRef<HTMLDivElement>(null);
 
