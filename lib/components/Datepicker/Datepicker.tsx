@@ -49,7 +49,7 @@ function Datepicker({ date, updateDateState, Calendar = DefaultCalendar }: Datep
   }, [date, updateDateState, lastValidDate]);
 
   return (
-    <div className={styles.inputWrapper} ref={datepickerRef}>
+    <div className={styles.inputWrapper} ref={datepickerRef} data-testid='datepicker'>
       <DateInput
         date={date}
         onClick={openCalendar}

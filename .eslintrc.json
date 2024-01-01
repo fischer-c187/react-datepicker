@@ -2,7 +2,7 @@
   "root": true,
   "env": { "browser": true, "es2021": true },
   "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "prettier"],
-  "ignorePatterns": ["dist", "vite.config.ts"],
+  "ignorePatterns": ["dist", "vite.config.ts", "setupTests.ts"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",

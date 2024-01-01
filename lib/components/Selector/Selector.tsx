@@ -11,11 +11,21 @@ type SelectorProps = {
 function Selector({ element, previousHandleClick, nextHandleClick }: SelectorProps) {
   return (
     <div className={styles.selectorWrapper}>
-      <button type='button' onClick={previousHandleClick} className={styles.button}>
+      <button
+        data-testid='previousButton'
+        type='button'
+        onClick={previousHandleClick}
+        className={styles.button}
+      >
         <img src={LeftArrow} alt='precedent Element' />
       </button>
       <span className={styles.text}>{element}</span>
-      <button onClick={nextHandleClick} className={styles.button} type='button'>
+      <button
+        data-testid='nextButton'
+        onClick={nextHandleClick}
+        className={styles.button}
+        type='button'
+      >
         <img src={RightArrow} alt='next Element' />
       </button>
     </div>

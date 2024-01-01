@@ -37,7 +37,9 @@ function Calendar({ date, onClickNewDate, children }: CalendarProps) {
 
   return (
     <CalendarContext.Provider value={contextValue}>
-      <div className={styles.calendar}>{children}</div>
+      <div className={styles.calendar} data-testid='calendar'>
+        {children}
+      </div>
     </CalendarContext.Provider>
   );
 }
