@@ -11,6 +11,7 @@ type DateInputProps = {
 function DateInput({ date, onClick, onBlur, onKeyDown, onChange }: DateInputProps) {
   return (
     <input
+      data-testid='dateInput'
       className={styles.dateInput}
       type='text'
       value={date}

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import CalendarContext from './context/context';
 import { areDatesEqual, getDaysNumberArray, getFirstDayMonth } from '../../utils/date';
 import styles from './Calendar.module.css';
-import Day from './Day/Day';
+import Day from '../Day/Day';
 
 function Days() {
   const context = useContext(CalendarContext);
