@@ -6,10 +6,12 @@ export const calendarReducerAction = {
   NEXT_MONTH: 'NEXT_MONTH',
   PREVIOUS_YEAR: 'PREVIOUS_YEAR',
   NEXT_YEAR: 'NEXT_YEAR',
-};
+} as const;
+
+export type CalendarActionType = keyof typeof calendarReducerAction;
 
 export type CalendarActions = {
-  type: string;
+  type: CalendarActionType;
   payload?: Partial<DateParts>;
 };
 
