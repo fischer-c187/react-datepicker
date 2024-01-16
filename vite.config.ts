@@ -33,7 +33,7 @@ export default defineConfig({
       external: ['react', 'react/jsx-runtime', 'react-dom'],
       input: Object.fromEntries(
         glob
-          .sync('lib/**/*.{ts,tsx}')
+          .sync('lib/**/*.{ts,tsx}', { ignore: '**/*.test.{ts,tsx}' })
           .map((file) => [
             relative('lib', file.slice(0, file.length - extname(file).length)),
             fileURLToPath(new URL(file, import.meta.url)),
