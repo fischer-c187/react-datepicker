@@ -60,7 +60,6 @@ describe('#Datepicker', () => {
     await userEvent.clear(input);
     await userEvent.type(input, 'invalid');
     await userEvent.click(document.body);
-    screen.debug();
     expect(input.value).toEqual('2/1/2001');
   });
 

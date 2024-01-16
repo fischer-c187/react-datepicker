@@ -19,7 +19,18 @@ import DateInput from '../DateInput/DateInput';
  *
  * @param {DatepickerProps} props - Props including 'date', 'updateDateState', and an optional 'Calendar' component.
  */
-function Datepicker({ date, updateDateState, Calendar = DefaultCalendar }: DatepickerProps) {
+function Datepicker({
+  date,
+  updateDateState,
+  Calendar = DefaultCalendar,
+  className,
+  id,
+  name,
+  placeholder,
+  pattern,
+  title,
+  required,
+}: DatepickerProps) {
   const datepickerRef = useRef<HTMLDivElement>(null);
 
   const lastValidDate = useLastValidateDate(date);
@@ -56,6 +67,13 @@ function Datepicker({ date, updateDateState, Calendar = DefaultCalendar }: Datep
         onBlur={validateOrResetDate}
         onKeyDown={handleKeyDownToggleCalendar}
         onChange={(event) => updateDateState(event.target.value)}
+        className={className}
+        id={id}
+        name={name}
+        placeholder={placeholder}
+        pattern={pattern}
+        title={title}
+        required={required}
       />
       {displayCalendar && <Calendar date={date} onClickNewDate={handleNewDate} />}
     </div>
