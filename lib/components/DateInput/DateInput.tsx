@@ -6,22 +6,46 @@ type DateInputProps = {
   onBlur: () => void;
   onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
+  name?: string;
+  placeholder?: string;
+  pattern?: string;
+  title?: string;
+  id?: string;
+  required?: boolean;
 };
 
-function DateInput({ date, onClick, onBlur, onKeyDown, onChange }: DateInputProps) {
+function DateInput({
+  date,
+  onClick,
+  onBlur,
+  onKeyDown,
+  onChange,
+  className,
+  name,
+  placeholder,
+  pattern,
+  title,
+  id,
+  required,
+}: DateInputProps) {
   return (
     <input
       data-testid='dateInput'
-      className={styles.dateInput}
+      className={className || styles.dateInput}
       type='text'
       value={date}
       onChange={onChange}
       onClick={onClick}
       onBlur={onBlur}
       onKeyDown={onKeyDown}
-      pattern='^(1[0-2]|0?[1-9])(\/|-)(3[01]|[12][0-9]|0?[1-9])(\/|-)([0-9]{2})?[0-9]{2}$'
-      title='Enter the date in this format: MM/DD/YYYY or MM-DD-YYYY'
+      placeholder={placeholder}
+      id={id}
+      name={name}
+      pattern={pattern}
+      title={title || 'Enter the date in this format: MM/DD/YYYY or MM-DD-YYYY'}
       tabIndex={0}
+      required={required}
     />
   );
 }

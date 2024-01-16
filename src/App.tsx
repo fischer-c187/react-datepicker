@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Datepicker } from '..';
+import { Datepicker } from '../lib/main';
 import styles from './App.module.css';
 
 function App() {
@@ -7,7 +7,9 @@ function App() {
 
   return (
     <div className={styles.inputWrapper}>
-      <Datepicker date={date} updateDateState={setDate} />
+      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+      <label htmlFor='datepicker'>Date</label>
+      <Datepicker date={date} placeholder='MM/dd/YYYY' updateDateState={setDate} id='datepicker' />
     </div>
   );
 }
