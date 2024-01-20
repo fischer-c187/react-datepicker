@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { forwardRef, useCallback, useRef } from 'react';
 import styles from './Datepicker.module.css';
 import DefaultCalendar from '../Calendar/DefaultCalendar';
 import { DatepickerProps } from '../../interfaces/componentsTypes';
@@ -30,6 +30,7 @@ function Datepicker({
   pattern,
   title,
   required,
+  innerRef,
 }: DatepickerProps) {
   const datepickerRef = useRef<HTMLDivElement>(null);
 
@@ -74,10 +75,15 @@ function Datepicker({
         pattern={pattern}
         title={title}
         required={required}
+        innerRef={innerRef}
       />
       {displayCalendar && <Calendar date={date} onClickNewDate={handleNewDate} />}
     </div>
   );
 }
+
+export const DatepickerWithRef = forwardRef<HTMLInputElement, DatepickerProps>((props, ref) => (
+  <Datepicker {...props} innerRef={ref} />
+));
 
 export default Datepicker;

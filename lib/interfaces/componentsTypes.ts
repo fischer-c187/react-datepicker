@@ -14,4 +14,5 @@ export type DatepickerProps = {
   pattern?: string;
   title?: string;
   required?: boolean;
+  innerRef?: React.Ref<HTMLInputElement>;
 };
