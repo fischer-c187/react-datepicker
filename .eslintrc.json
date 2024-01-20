@@ -15,6 +15,7 @@
     "react/require-default-props": "off",
     "no-console": "warn",
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-unused-vars": "warn"
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/jsx-props-no-spreading": "off" // Autorise la propagation des props
   }
 }

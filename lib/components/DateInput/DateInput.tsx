@@ -13,6 +13,7 @@ type DateInputProps = {
   title?: string;
   id?: string;
   required?: boolean;
+  innerRef?: React.Ref<HTMLInputElement>;
 };
 
 function DateInput({
@@ -28,6 +29,7 @@ function DateInput({
   title,
   id,
   required,
+  innerRef,
 }: DateInputProps) {
   return (
     <input
@@ -46,6 +48,7 @@ function DateInput({
       title={title || 'Enter the date in this format: MM/DD/YYYY or MM-DD-YYYY'}
       tabIndex={0}
       required={required}
+      ref={innerRef}
     />
   );
 }
