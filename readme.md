@@ -1,6 +1,14 @@
 # Datepicker Project
 
-This project features a Datepicker component that enables users to select dates using an interactive calendar.
+The Datepicker component allows users to select a date, built using React and custom hooks to provide full date picking functionality. This component is perfect for integration into forms or user interfaces where precise date input is required.
+
+## Installation
+
+To use the Datepicker component in your project, start by installing it via npm:
+
+```bash
+npm install @drskyjs/datepicker
+```
 
 ## Using the Datepicker Component
 
@@ -8,13 +16,27 @@ This project features a Datepicker component that enables users to select dates 
 function MyComponent() {
   const [date, setDate] = useState('');
 
+  const updateDateState = (newDate) => {
+    setDate(newDate);
+  };
+
   return (
     <div>
-      <Datepicker date={date} updateDateState={setDate} />
+      <Datepicker date={date} updateDateState={updateDateState} placeholder='Select a date' />
     </div>
   );
 }
 ```
+
+## Props
+
+The `Datepicker` component accepts the following props for customization:
+
+- **date (string)**: The currently selected date.
+- **updateDateState (function)**: Function to update the date state.
+- **Calendar (component, optional**): A custom Calendar component to replace the default one.
+- **className, id, name, placeholder, pattern, title, required (string, optional)**: Standard attributes for the date input element.
+- **innerRef (ref, optional)**: Reference to pass to the date input component for direct access.
 
 ## Customizing the Calendar Component
 
