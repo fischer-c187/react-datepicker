@@ -8,6 +8,17 @@ type YearSelectionProps = {
   yearMax?: number;
 };
 
+/**
+ * YearSelection component displaying the current year.
+ *
+ * This component is a child of the Calendar component and displays the current year. It utilizes the
+ * `CalendarContext` to access the current date and provides functionalities to handle year changes.
+ * The component uses the `Selector` component to render the year and handle year changes.
+ *
+ * @param {YearSelectionProps} props - Props including 'yearMin' and 'yearMax'.
+ * @param {number} [props.yearMin=0] - The minimum year that can be selected.
+ * @param {number} [props.yearMax=3000] - The maximum year that can be selected.
+ */
 function YearSelection({ yearMin = 0, yearMax = 3000 }: YearSelectionProps) {
   const context = useContext(CalendarContext);
 

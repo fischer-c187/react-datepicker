@@ -16,6 +16,12 @@ type DateInputProps = {
   innerRef?: React.Ref<HTMLInputElement>;
 };
 
+/**
+ * DateInput component for entering a date.
+ *
+ * This component is a child of the Datepicker component and provides a text input field for entering
+ * a date. It also provides functionalities to handle date validation and formatting.
+ */
 function DateInput({
   date,
   onClick,
