@@ -28,6 +28,32 @@ function MyComponent() {
 }
 ```
 
+### Using a Ref on the Input Element
+
+If you need to attach a ref directly to the input element of the Datepicker, you should use the DatepickerWithRef component with the innerRef prop as follows:
+
+```tsx
+function MyComponent() {
+  const [date, setDate] = useState('');
+  const inputRef = useRef(null);
+
+  const updateDateState = (newDate) => {
+    setDate(newDate);
+  };
+
+  return (
+    <div>
+      <Datepicker
+        date={date}
+        updateDateState={updateDateState}
+        placeholder='Select a date'
+        innerRef={inputRef}
+      />
+    </div>
+  );
+}
+```
+
 ## Props
 
 The `Datepicker` component accepts the following props for customization:
