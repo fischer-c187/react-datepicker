@@ -8,6 +8,12 @@ type SelectorProps = {
   nextHandleClick: () => void;
 };
 
+/**
+ * Selector component for selecting an element.
+ *
+ * This component provides a selector to navigate through a list of elements. It displays the current
+ * element and provides functionalities to handle the previous and next element.
+ */
 function Selector({ element, previousHandleClick, nextHandleClick }: SelectorProps) {
   return (
     <div className={styles.selectorWrapper}>

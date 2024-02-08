@@ -4,6 +4,13 @@ import { areDatesEqual, getDaysNumberArray, getFirstDayMonth } from '../../utils
 import styles from './Calendar.module.css';
 import Day from '../Day/Day';
 
+/**
+ * Days component displaying the days of the month.
+ *
+ * This component is a child of the Calendar component and displays the days of the month in a grid
+ * format. It utilizes the `CalendarContext` to access the current date and provides functionalities
+ * to handle new date selection. The component uses the `Day` component to render individual days.
+ */
 function Days() {
   const context = useContext(CalendarContext);
 
