@@ -3,6 +3,14 @@
   "private": false,
   "author": "drskyJS",
   "version": "1.3.0",
+  "description": "A lightweight, customizable React datepicker component built with @drskyjs, offering seamless integration with modern React applications.",
+  "keywords": [
+    "react",
+    "datepicker",
+    "react-component",
+    "date-picker",
+    "calendar"
+  ],
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",

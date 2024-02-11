@@ -2,6 +2,14 @@
 
 The Datepicker component allows users to select a date, built using React and custom hooks to provide full date picking functionality. This component is perfect for integration into forms or user interfaces where precise date input is required.
 
+## Prerequisites
+
+This section outlines the necessary tools and environments required to successfully use or contribute to the @drskyjs/datepicker project. Ensure that your development environment meets the following prerequisites:
+Development Environment
+
+- Node.js: Version 20.x or newer
+- npm: Version 10.x or newer
+
 ## Installation
 
 To use the Datepicker component in your project, start by installing it via npm:
